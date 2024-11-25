@@ -7,4 +7,19 @@
     <string name="welcome_description">Prevent stunting with early \ndetection and growth \nmonitoring for your child\'s \nhealth and a brighter future</string>
     <string name="button_welcome">Get Started</string>
     <string name="news_title">News Title</string>
+    <string name="Stunt_detect">Stunting \nDetection</string>
+    <string name="name">Name</string>
+    <string name="age">Age in Month</string>
+    <string name="height">Height (cm)</string>
+    <string name="radiobutton_male">Male</string>
+    <string name="radiobutton_female">Female</string>
+    <string name="submit">Submit</string>
+    <string name="result_title">Detection Result</string>
+    <string name="Stunt_status">Your child is in good nutritional health,\ncontinue maintaining a balanced diet.</string>
+    <string name="Stunt_disclaimer">* Results are predictive and not a medical diagnosis. Consult a healthcare provider for accurate evaluation.</string>
+    <string name="tips_title">Nutrition</string>
+    <string name="tips_list">-ini tips pertama\n-tips ke 2\n-tips ke 3</string>
+    <string name="article">Related Article</string>
+    <string name="tips">Quick Tips</string>
+    <string name="history_title">Detection\nHistory</string>
 </resources>

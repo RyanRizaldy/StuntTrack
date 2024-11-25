@@ -28,10 +28,10 @@ class TrackingFragment : Fragment() {
         _binding = FragmentTrackingBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textTracking
-        trackingViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+//        val textView: TextView = binding.textTracking
+//        trackingViewModel.text.observe(viewLifecycleOwner) {
+//            textView.text = it
+//        }
         return root
     }
 
