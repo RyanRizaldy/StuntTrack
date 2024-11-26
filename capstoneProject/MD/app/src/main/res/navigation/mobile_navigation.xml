@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/navigation_history"
-        android:name="com.bangkit.stuntack.ui.history.NotificationsFragment"
+        android:name="com.bangkit.stuntack.ui.history.HistoryFragment"
         android:label="@string/history"
         tools:layout="@layout/fragment_history" />
 </navigation>

@@ -20,6 +20,7 @@ class WelcomeActivity : AppCompatActivity() {
 
         buttonStarted.setOnClickListener {
             val intent = Intent(this, MainActivity::class.java)
+            intent.putExtra("open_tracking", true)
             startActivity(intent)
             finish()
         }

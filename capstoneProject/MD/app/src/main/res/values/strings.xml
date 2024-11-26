@@ -22,4 +22,5 @@
     <string name="article">Related Article</string>
     <string name="tips">Quick Tips</string>
     <string name="history_title">Detection\nHistory</string>
+    <string name="empty">nama kosong</string>
 </resources>

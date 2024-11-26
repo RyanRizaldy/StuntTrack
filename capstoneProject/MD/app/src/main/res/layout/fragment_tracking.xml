@@ -39,6 +39,7 @@
         app:layout_constraintTop_toBottomOf="@+id/nameLabel">
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/nameInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="16dp"
@@ -105,7 +106,7 @@
         app:layout_constraintTop_toBottomOf="@id/heightEditText">
 
         <RadioGroup
-            android:checkedButton="@+id/enabled_selected"
+            android:id="@+id/radioGroupGender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -133,6 +134,7 @@
 
     <!-- Submit -->
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/submit_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"

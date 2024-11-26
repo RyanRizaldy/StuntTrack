@@ -21,10 +21,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val navView: BottomNavigationView = binding.navView
-
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+
+        // Konfigurasi untuk AppBar
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_tracking, R.id.navigation_news, R.id.navigation_history
@@ -32,5 +31,11 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+
+        // Periksa apakah ada data tambahan untuk membuka fragment tertentu
+        val shouldOpenTrackingFragment = intent?.getBooleanExtra("open_tracking", false) ?: false
+        if (shouldOpenTrackingFragment) {
+            navController.navigate(R.id.navigation_tracking)
+        }
     }
 }

@@ -1,13 +1,20 @@
 package com.bangkit.stuntack.ui.tracking
 
+import android.app.Application
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.bangkit.stuntack.data.database.room.History
+import com.bangkit.stuntack.data.database.repository.HistoryRepository
+import kotlinx.coroutines.launch
 
-class TrackingViewModel : ViewModel() {
+class TrackingViewModel(application: Application) : ViewModel() {
+    private val mHistoryRepository: HistoryRepository = HistoryRepository(application)
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is tracking Fragment"
+    fun insertHistory(history: History) {
+        viewModelScope.launch {
+            mHistoryRepository.insert(history)
+        }
     }
-    val text: LiveData<String> = _text
 }

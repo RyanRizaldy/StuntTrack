@@ -7,32 +7,52 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.bangkit.stuntack.data.database.repository.HistoryRepository
 import com.bangkit.stuntack.databinding.FragmentHistoryBinding
+import com.bangkit.stuntack.ui.ViewModelFactory
 
-class NotificationsFragment : Fragment() {
+class HistoryFragment : Fragment() {
 
     private var _binding: FragmentHistoryBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
+    private lateinit var historyAdapter: HistoryAdapter
+    private lateinit var historyViewModel: HistoryViewModel
+
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val historyViewModel =
-            ViewModelProvider(this).get(HistoryViewModel::class.java)
-
         _binding = FragmentHistoryBinding.inflate(inflater, container, false)
-        val root: View = binding.root
 
-        val textView: TextView = binding.textHistory
-        historyViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        historyViewModel = ViewModelProvider(
+            this,
+            ViewModelFactory.getInstance(requireActivity().application)
+        )[HistoryViewModel::class.java]
+
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        historyAdapter = HistoryAdapter()
+
+
+        binding.rvHistory.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = historyAdapter
         }
-        return root
+
+        observeHistoryData()
+    }
+
+    private fun observeHistoryData() {
+        historyViewModel.getAllHistory().observe(viewLifecycleOwner) { historyList ->
+            historyAdapter.submitList(historyList)
+        }
     }
 
     override fun onDestroyView() {

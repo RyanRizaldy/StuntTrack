@@ -13,8 +13,13 @@ lifecycleLivedataKtx = "2.8.7"
 lifecycleViewmodelKtx = "2.8.7"
 navigationFragmentKtx = "2.8.4"
 navigationUiKtx = "2.8.4"
+roomCompiler = "2.5.2"
+roomRuntime = "2.5.2"
 
 [libraries]
+androidx-room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomRuntime" }
+lifecycle-livedata-ktx = { module = "androidx.lifecycle:lifecycle-livedata-ktx", version.ref = "lifecycleLivedataKtx" }
+room-compiler = { module = "androidx.room:room-compiler", version.ref = "roomCompiler" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
