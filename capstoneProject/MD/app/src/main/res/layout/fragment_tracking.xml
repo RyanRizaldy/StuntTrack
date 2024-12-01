@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="?attr/actionBarSize"
+    android:paddingTop="25dp"
     tools:context=".ui.tracking.TrackingFragment">
 
     <!-- Title-->
@@ -12,9 +12,8 @@
         android:id="@+id/stunt_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
+        android:layout_marginHorizontal="30dp"
         android:text="@string/Stunt_detect"
-        android:textStyle="bold"
         android:fontFamily="@font/gentium_basic"
         android:textColor="@color/title"
         android:textSize="40sp"
@@ -26,27 +25,32 @@
         android:id="@+id/nameLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/name"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="10dp"
         android:fontFamily="@font/gentium_basic"
-        android:textSize="24sp"
+        android:text="@string/name"
         android:textColor="@color/title"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="16dp"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/stunt_title"
+        app:layout_constraintStart_toStartOf="@+id/stunt_title"
         app:layout_constraintTop_toBottomOf="@+id/stunt_title" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/nameEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/nameLabel"
+        app:layout_constraintStart_toStartOf="@+id/nameLabel"
         app:layout_constraintTop_toBottomOf="@+id/nameLabel">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/nameInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            />
+            android:inputType="textPersonName"
+            android:background="@drawable/input_shape"
+            android:layout_marginHorizontal="30dp"
+            android:textColor="@color/black"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Age -->
@@ -54,27 +58,32 @@
         android:id="@+id/ageLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/age"
+        android:layout_marginHorizontal="40dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/gentium_basic"
+        android:text="@string/age"
+        android:textColor="@color/title"
         android:textFontWeight="@integer/material_motion_duration_long_1"
         android:textSize="24sp"
-        android:textColor="@color/title"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@id/nameEditText"
+        app:layout_constraintStart_toStartOf="@+id/nameEditText"
         app:layout_constraintTop_toBottomOf="@+id/nameEditText" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/ageEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/ageLabel"
+        app:layout_constraintStart_toStartOf="@+id/ageLabel"
         app:layout_constraintTop_toBottomOf="@+id/ageLabel">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            />
+            android:layout_marginHorizontal="30dp"
+            android:textColor="@color/black"
+            android:inputType="number"
+            android:background="@drawable/input_shape"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Height -->
@@ -82,26 +91,32 @@
         android:id="@+id/heightLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/height"
-        android:fontFamily="@font/gentium_basic"
-        android:textSize="24sp"
-        android:textColor="@color/title"
-        android:layout_marginHorizontal="16dp"
+        android:layout_marginHorizontal="40dp"
         android:layout_marginTop="8dp"
+        android:fontFamily="@font/gentium_basic"
+        android:text="@string/height"
+        android:textColor="@color/title"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@+id/ageEditText"
+        app:layout_constraintStart_toStartOf="@+id/ageEditText"
         app:layout_constraintTop_toBottomOf="@+id/ageEditText" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/heightEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/heightLabel"
+        app:layout_constraintStart_toStartOf="@+id/heightLabel"
         app:layout_constraintTop_toBottomOf="@+id/heightLabel">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="16dp"
-            />
+            android:layout_marginHorizontal="30dp"
+            android:inputType="numberDecimal"
+            android:textColor="@color/black"
+            android:background="@drawable/input_shape"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Gender -->
@@ -109,36 +124,37 @@
         android:id="@+id/radio_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@+id/heightEditText"
+        app:layout_constraintStart_toStartOf="@+id/heightEditText"
         app:layout_constraintTop_toBottomOf="@id/heightEditText">
 
         <RadioGroup
             android:id="@+id/radioGroupGender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginHorizontal="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="8dp"
-            >
+            android:layout_marginHorizontal="30dp"
+            android:orientation="horizontal">
+
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:enabled="true"
                 android:checked="false"
-                android:textSize="24sp"
+                android:enabled="true"
+                android:fontFamily="@font/gentium_basic"
                 android:text="@string/radiobutton_male"
-                android:fontFamily="@font/gentium_basic"
-                />
+                android:textColor="@color/title"
+                android:textSize="24sp" />
+
             <RadioButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:checked="false"
                 android:enabled="true"
-                android:textSize="24sp"
-                android:layout_marginStart="16dp"
-                android:text="@string/radiobutton_female"
                 android:fontFamily="@font/gentium_basic"
-                />
+                android:text="@string/radiobutton_female"
+                android:textColor="@color/title"
+                android:textSize="24sp" />
         </RadioGroup>
     </LinearLayout>
 
@@ -148,25 +164,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/submit"
-        android:textSize="20sp"
         android:paddingHorizontal="80dp"
         android:paddingVertical="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/radio_container"/>
+        android:layout_marginTop="30dp"
+        android:text="@string/submit"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:fontFamily="@font/gentium_basic"
+        app:layout_constraintEnd_toEndOf="@+id/radio_container"
+        app:layout_constraintStart_toStartOf="@+id/radio_container"
+        app:layout_constraintTop_toBottomOf="@id/radio_container" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        app:itemIconTint="@color/button"
-        app:itemTextColor="#3E3E3E"
-        android:background="@color/navigation"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,13 +8,28 @@
     android:background="@color/white"
     tools:context=".ui.splash.SplashActivity">
 
+
+    <ImageView
+        android:id="@+id/image_splash"
+        android:layout_width="210dp"
+        android:layout_height="203dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.355"
+        app:srcCompat="@drawable/splash_image" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="This is splash activity"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        android:fontFamily="@font/aoboshi_one"
+        android:text="@string/app_name"
+        android:textColor="@color/title"
+        android:textSize="38sp"
+        app:layout_constraintEnd_toEndOf="@+id/image_splash"
+        app:layout_constraintHorizontal_bias="0.521"
+        app:layout_constraintStart_toStartOf="@+id/image_splash"
+        app:layout_constraintTop_toBottomOf="@+id/image_splash" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,23 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="25dp"
     tools:context=".ui.news.NewsFragment">
+
+
+    <!-- Title-->
+    <TextView
+        android:id="@+id/stunt_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="30dp"
+        android:paddingBottom="10dp"
+        android:text="@string/news_articles"
+        android:fontFamily="@font/gentium_basic"
+        android:textColor="@color/title"
+        android:textSize="40sp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_event"
@@ -17,7 +33,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/stunt_title"
+        tools:listitem="@layout/card_news" />
 
     <ProgressBar
         android:id="@+id/progressBar"

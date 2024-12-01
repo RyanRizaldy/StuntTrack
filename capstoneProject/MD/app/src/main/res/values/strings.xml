@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">StunTack</string>
+    <string name="app_name">StunTrack</string>
     <string name="tracking">Track</string>
     <string name="news">News</string>
     <string name="history">History</string>
@@ -23,4 +23,5 @@
     <string name="tips">Quick Tips</string>
     <string name="history_title">Detection\nHistory</string>
     <string name="empty">nama kosong</string>
+    <string name="news_articles">News \nArticles</string>
 </resources>

@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bangkit.stuntack.data.database.helper.HistoryDiffCallback
 import com.bangkit.stuntack.data.database.room.History
 import com.bangkit.stuntack.databinding.CardHistoryBinding
 

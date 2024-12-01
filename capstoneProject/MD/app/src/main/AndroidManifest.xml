@@ -13,9 +13,6 @@
         android:theme="@style/Theme.StunTack"
         tools:targetApi="31">
         <activity
-            android:name=".ui.ResultActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.splash.SplashActivity"
             android:exported="true"
             android:screenOrientation="portrait"
@@ -35,7 +32,11 @@
             android:name=".MainActivity"
             android:exported="false"
             android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity" />
+            tools:ignore="LockedOrientationActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity
+            android:name=".ui.ResultActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.news.detail.NewsDetailsActivity"
             android:exported="false"

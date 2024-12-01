@@ -3,7 +3,9 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardBackgroundColor="@color/history_card"
-    android:layout_margin="8dp"
+    android:layout_marginHorizontal="30dp"
+    android:layout_marginTop="18dp"
+    app:strokeWidth="0dp"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
@@ -12,12 +14,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingHorizontal="24dp"
-            android:paddingVertical="16dp">
+            android:paddingVertical="14dp">
             <TextView
                 android:id="@+id/nameText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/name"
+                android:textSize="20sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/gentium_basic"
                 android:textColor="@color/title"
@@ -28,6 +31,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="8dp"
+                android:textSize="15sp"
                 android:text="@string/Stunt_status"
                 android:fontFamily="@font/gentium_basic"
                 android:textColor="@color/title"
@@ -39,9 +43,10 @@
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="8dp"
                 android:text="@string/app_name"
+                android:textSize="15sp"
                 android:fontFamily="@font/gentium_basic"
                 android:layout_gravity="end"
-                android:textColor="@color/title"
+                android:textColor="@color/history_date"
                 android:textAppearance="?attr/textAppearanceBodyMedium"
                 />
         </LinearLayout>
