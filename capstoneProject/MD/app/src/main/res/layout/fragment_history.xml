@@ -13,6 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:text="@string/history_title"
+        android:textStyle="bold"
+        android:fontFamily="@font/gentium_basic"
         android:textColor="@color/title"
         android:textSize="40sp"
         app:layout_constraintTop_toTopOf="parent"
