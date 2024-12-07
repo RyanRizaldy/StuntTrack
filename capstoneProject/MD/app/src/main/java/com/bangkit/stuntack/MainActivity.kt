@@ -31,11 +31,5 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
-        // Periksa apakah ada data tambahan untuk membuka fragment tertentu
-        val shouldOpenTrackingFragment = intent?.getBooleanExtra("open_tracking", false) ?: false
-        if (shouldOpenTrackingFragment) {
-            navController.navigate(R.id.navigation_tracking)
-        }
     }
 }

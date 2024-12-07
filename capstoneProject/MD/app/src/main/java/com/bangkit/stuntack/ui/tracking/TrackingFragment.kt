@@ -7,19 +7,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.fragment.findNavController
 import com.bangkit.stuntack.MainActivity
-import com.bangkit.stuntack.R
 import com.bangkit.stuntack.data.database.helper.DateHelper
 import com.bangkit.stuntack.data.database.repository.HistoryRepository
 import com.bangkit.stuntack.data.database.room.History
 import com.bangkit.stuntack.databinding.FragmentTrackingBinding
-import com.bangkit.stuntack.ui.ResultActivity
 import com.bangkit.stuntack.ui.ViewModelFactory
 import com.bangkit.stuntack.ui.history.HistoryViewModel
 

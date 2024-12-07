@@ -6,7 +6,7 @@
     android:layout_gravity="center"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    android:padding="8dp">
+    android:layout_marginBottom="15dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/card_view"
@@ -42,8 +42,8 @@
         android:maxLines="2"
         android:justificationMode="inter_word"
         android:text="@string/news_title"
+        android:textColor="@color/news_title"
         android:textSize="20sp"
-        android:textStyle="bold"
         android:fontFamily="@font/gentium_book_basic"
         android:layout_marginTop="4dp" />
 

@@ -8,4 +8,5 @@
     <color name="card">#C7D2EF</color>
     <color name="history_card">#F3F3F3</color>
     <color name="history_date">#979797</color>
+    <color name="news_title">#1E1E1E</color>
 </resources>

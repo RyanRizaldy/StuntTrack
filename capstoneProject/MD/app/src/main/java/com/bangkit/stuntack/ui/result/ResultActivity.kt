@@ -1,4 +1,4 @@
-package com.bangkit.stuntack.ui
+package com.bangkit.stuntack.ui.result
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
