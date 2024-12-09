@@ -110,7 +110,8 @@ class TrackingFragment : Fragment() {
     private fun navigateToResultActivity(prediction: ModelResponse) {
         val intent = Intent(requireContext(), ResultActivity::class.java).apply {
             putExtra("PREDICTED_CLASS", prediction.predictedClass)
-            putExtra("PREDICTION_PROBABILITY", ArrayList(prediction.predictionProbability))
+            putExtra("PREDICTION_PROBABILITY",
+                prediction.predictionProbability?.let { ArrayList(it) })
         }
         startActivity(intent)
     }

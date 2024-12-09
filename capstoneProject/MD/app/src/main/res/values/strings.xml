@@ -24,4 +24,5 @@
     <string name="history_title">Detection\nHistory</string>
     <string name="empty">nama kosong</string>
     <string name="news_articles">News \nArticles</string>
+    <string name="result">Result</string>
 </resources>

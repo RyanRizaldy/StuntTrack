@@ -35,8 +35,14 @@ class HistoryAdapter : ListAdapter<History, HistoryAdapter.HistoryViewHolder>(DI
         fun bind(history: History) {
             binding.apply {
                 nameText.text = history.name
-                statusText.text = history.status
                 dateText.text = history.date
+                statusText.text = when (history.status) {
+                    "severely_stunted" -> "Severely stunted and needs immediate medical attention."
+                    "stunted" -> "Stunted and requires nutritional support and monitoring."
+                    "normal" -> "Normal growth, but continue to ensure proper nutrition."
+                    "tinggi" -> "Good nutritional health, continue maintaining a balanced diet."
+                    else -> "Unable to determine the prediction. Please consult a healthcare provider."
+                }
             }
         }
     }

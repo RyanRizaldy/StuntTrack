@@ -3,60 +3,68 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingTop="20dp"
     tools:context=".ui.result.ResultActivity">
 
-    <!-- Appbar -->
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/topNavbar"
-        android:layout_width="match_parent"
+
+    <ImageView
+        android:id="@+id/btn_back"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintEnd_toStartOf="@+id/result"
+        app:layout_constraintHorizontal_bias="0.197"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_back" />
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/topAppBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="?attr/actionBarSize"
-            app:title="@string/result_title"
-            android:textStyle="bold"
-            android:fontFamily="@font/gentium_basic"
-            android:background="@color/white"
-            app:navigationIcon="@drawable/ic_back" />
+    <TextView
+        android:id="@+id/result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/result"
+        android:fontFamily="@font/gentium_basic"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="@color/title"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    </com.google.android.material.appbar.AppBarLayout>
 
     <!-- StuntBar -->
     <LinearLayout
         android:id="@+id/stuntBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/topNavbar"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="23dp"
         android:orientation="horizontal"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="16dp">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/result">
 
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/cry"/>
+            android:src="@drawable/cry" />
 
         <com.google.android.material.slider.RangeSlider
             android:id="@+id/statusRangeSlider"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            app:trackColor="@color/material_dynamic_neutral90"
+            android:layout_weight="3"
             android:enabled="false"
             android:stepSize="1"
             android:valueFrom="0"
-            android:valueTo="4"
-            android:layout_weight="3" />
+            android:valueTo="4" />
 
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/babyicon_smile"/>
+            android:src="@drawable/babyicon_smile" />
     </LinearLayout>
 
     <!-- StuntResult -->
@@ -65,64 +73,81 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:text="@string/Stunt_status"
-        android:textStyle="bold"
         android:fontFamily="@font/gentium_basic"
-        android:textSize="20sp"
         android:gravity="center"
-        app:layout_constraintTop_toBottomOf="@+id/stuntBar"/>
+        android:text="@string/Stunt_status"
+        android:textColor="@color/title"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginHorizontal="30dp"
+        app:layout_constraintEnd_toEndOf="@+id/stuntBar"
+        app:layout_constraintStart_toStartOf="@+id/stuntBar"
+        app:layout_constraintTop_toBottomOf="@+id/stuntBar" />
 
     <TextView
         android:id="@+id/stuntDisclaimer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginVertical="8dp"
-        android:text="@string/Stunt_disclaimer"
+        android:layout_marginHorizontal="30dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="@font/gentium_basic"
+        android:text="@string/Stunt_disclaimer"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
         android:textSize="16sp"
-        app:layout_constraintTop_toBottomOf="@+id/stuntResult"/>
+        app:layout_constraintEnd_toEndOf="@+id/stuntResult"
+        app:layout_constraintStart_toStartOf="@+id/stuntResult"
+        app:layout_constraintTop_toBottomOf="@+id/stuntResult" />
 
     <!-- QuickTips -->
     <TextView
         android:id="@+id/tips_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/tips"
-        android:textStyle="bold"
+        android:layout_marginHorizontal="30dp"
         android:fontFamily="@font/gentium_basic"
+        android:text="@string/tips"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/title"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/stuntDisclaimer"/>
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/stuntDisclaimer"
+        app:layout_constraintStart_toStartOf="@+id/stuntDisclaimer"
+        app:layout_constraintTop_toBottomOf="@+id/stuntDisclaimer" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/tips_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="8dp"
+        app:strokeWidth="0dp"
         app:cardBackgroundColor="@color/card"
-        android:layout_margin="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/tips_title"
+        app:layout_constraintStart_toStartOf="@+id/tips_title"
         app:layout_constraintTop_toBottomOf="@+id/tips_title">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingHorizontal="16dp"
             android:paddingVertical="8dp">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/tips_title"
-                android:textColor="@color/title"
                 android:textAppearance="?attr/textAppearanceTitleMedium"
-                />
+                android:textColor="@color/title" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginVertical="8dp"
                 android:text="@string/tips_list"
-                android:textColor="@color/title"
                 android:textAppearance="?attr/textAppearanceBodyMedium"
-                />
+                android:textColor="@color/title" />
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
@@ -133,18 +158,23 @@
         android:id="@+id/article_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/article"
-        android:textStyle="bold"
         android:fontFamily="@font/gentium_basic"
+        android:text="@string/article"
         android:textSize="20sp"
-        app:layout_constraintTop_toBottomOf="@+id/tips_card"/>
+        android:textStyle="bold"
+        android:textColor="@color/title"
+        android:layout_marginTop="16dp"
+        android:layout_marginHorizontal="30dp"
+        app:layout_constraintEnd_toEndOf="@+id/tips_card"
+        app:layout_constraintStart_toStartOf="@+id/tips_card"
+        app:layout_constraintTop_toBottomOf="@+id/tips_card" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_history"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
+        android:layout_marginHorizontal="20dp"
         app:layout_constraintTop_toBottomOf="@id/article_title"
         tools:listitem="@layout/card_news" />
 

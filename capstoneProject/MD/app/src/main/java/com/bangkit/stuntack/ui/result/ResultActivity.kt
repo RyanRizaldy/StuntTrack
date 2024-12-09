@@ -31,7 +31,7 @@ class ResultActivity : AppCompatActivity() {
             "severely_stunted" -> "sangat stunting"
             "stunted" -> "stunting"
             "normal" -> "normal"
-            "high_nutrition" -> "baik"
+            "tinggi" -> "baik"
             else -> "unknown"
         }
 
@@ -40,9 +40,9 @@ class ResultActivity : AppCompatActivity() {
         binding.stuntResult.text = getCustomMessage(predictedClass)
 
         // Button untuk kembali
-//        binding.btnBack.setOnClickListener {
-//            finish()
-//        }
+        binding.btnBack.setOnClickListener {
+            finish()
+        }
     }
 
     private fun setRangeSliderResult(result: String) {
@@ -93,7 +93,7 @@ class ResultActivity : AppCompatActivity() {
             "severely_stunted" -> "Your child is severely stunted and needs immediate medical attention."
             "stunted" -> "Your child is stunted and requires nutritional support and monitoring."
             "normal" -> "Your child's growth is normal, but continue to ensure proper nutrition."
-            "high_nutrition" -> "Your child is in good nutritional health, continue maintaining a balanced diet."
+            "tinggi" -> "Your child is in good nutritional health, continue maintaining a balanced diet."
             else -> "Unable to determine the prediction. Please consult a healthcare provider."
         }
     }
