@@ -23,14 +23,14 @@ StunTrack is a smart app designed to help families detect and manage stunting in
 5. **User-Friendly**
    - A clean and intuitive interface ensuring seamless navigation for all users.
 
-## Our Members Team
+## Our Team Members
 |            Name          | Bangkit ID |    Learning Path        |                    Universitas                    |                                                       Contacts                                                      |
 | :-------------------------: | :--------: | :----------------: | :----------------------------------------: | :-----------------------------------------------------------------------------------------------------------------: |
 |        Yovela Kalista Avansa   | M144B4KX4553 | Machine Learning    |   Universitas Nusa Mandiri   |           [LinkedIn](https://www.linkedin.com/in/yovela-kalista-avansa/) or [Github](https://github.com/yovelakalista23)           |
-|      Gilang Banyu Biru Erassunu    | M006BSY1463 | Machine Learning    |     Universitas Brawijaya      |   [LinkedIn](https://id.linkedin.com/in/gilangbbe) or [Github](https://github.com/gilangbbe)  |
-|    Muhammad Daffa Ramadhan         | M006BSY1580 | Machine Learning    |     Universitas Brawijaya      |            [LinkedIn](https://id.linkedin.com/in/daffaramadhanputra) or [Github](https://github.com/daffaramadhanputra)             |
-|      Muhammad Fikri Ranjabi        | C002BSY3113 | Cloud Computing     |    Institut Teknologi Bandung  |    [LinkedIn](https://id.linkedin.com/in/fikriranjabi) or [Github](https://github.com/ranjabi)    |
-|     Fikri Khoiron Fadhila          | C002BSY3196 | Cloud Computing     |    Institut Teknologi Bandung  |            [LinkedIn](https://id.linkedin.com/in/fikri-khoiron-fadhila) or [Github](https://github.com/fikrikhoironn)           |
-|       Muhamad Yazid Imani          | A001BSY2850 | Mobile Development  |     Institut Pertanian Bogor   | [LinkedIn](https://www.linkedin.com/in/muhammad-yazid-74a648190) or [Github](https://github.com/pierreviences) |
-|         Achmad Fuadi               | A303BSY1938 | Mobile Development  |    Universitas PGRI Semarang   | [LinkedIn](https://id.linkedin.com/in/achmad-fuadi-115a83220) or [Github](https://github.com/acmfuadi) |
+|      Aurisa Rabina Komariah    | M254B4KX0738 | Machine Learning    |     Universitas Mercu Buana      |   [LinkedIn](https://www.linkedin.com/in/aurisarabina/) or [Github](https://github.com/aurisarbn)  |
+|    Alif Adhitya Rambani         | M118B4KY0377 | Machine Learning    |     Institut Teknologi Perusahaan Listrik Negara      |            [LinkedIn](https://www.linkedin.com/in/alif-adhitya/) or [Github]()             |
+|      Azmi Azis        | C118B4KY0772 | Cloud Computing     |    Institut Teknologi Perusahaan Listrik Negara  |    [LinkedIn](https://www.linkedin.com/in/azmiazis/) or [Github]()    |
+|     Alexandro Nesta          | C118B4KY0346 | Cloud Computing     |    Institut Teknologi Perusahaan Listrik Negara  |            [LinkedIn]() or [Github]()           |
+|       Ryan Rizaldy          | A764B4KY3988 | Mobile Development  |     Sekolah Tinggi Teknologi Bandung   | [LinkedIn](https://www.linkedin.com/in/ryan-rizaldy-a00164251/) or [Github](https://github.com/RyanRizaldy) |
+|         Hizbi Firdaus               | A476B4KY1795 | Mobile Development  |    Universitas Widyatama   | [LinkedIn](https://www.linkedin.com/in/hizbifirdaus/) or [Github](https://github.com/hizbifirdaus) |
 
