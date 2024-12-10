@@ -1,5 +1,4 @@
 ## Deployment to Google Cloud Platform
-  Thanks to [patrickloeber](https://github.com/patrickloeber) for the How To Deploy ML Models With Google Cloud Run in [Youtube Video](https://www.youtube.com/watch?v=vieoHqt7pxo)
 1) Setup Google Cloud Platform
     - Create a Project
     - Activate Cloud Run Api and Cloud Build API
