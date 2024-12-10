@@ -30,7 +30,7 @@ StunTrack is a smart app designed to help families detect and manage stunting in
 |      Aurisa Rabina Komariah    | M254B4KX0738 | Machine Learning    |     Universitas Mercu Buana      |   [LinkedIn](https://www.linkedin.com/in/aurisarabina/) or [Github](https://github.com/aurisarbn)  |
 |    Alif Adhitya Rambani         | M118B4KY0377 | Machine Learning    |     Institut Teknologi Perusahaan Listrik Negara      |            [LinkedIn](https://www.linkedin.com/in/alif-adhitya/) or [Github]()             |
 |      Azmi Azis        | C118B4KY0772 | Cloud Computing     |    Institut Teknologi Perusahaan Listrik Negara  |    [LinkedIn](https://www.linkedin.com/in/azmiazis/) or [Github](https://github.com/crophx)    |
-|     Alexandro Nesta          | C118B4KY0346 | Cloud Computing     |    Institut Teknologi Perusahaan Listrik Negara  |            [LinkedIn](https://www.linkedin.com/in/alexandro-nesta-248b1a266/) or [Github]()           |
+|     Alexandro Nesta          | C118B4KY0346 | Cloud Computing     |    Institut Teknologi Perusahaan Listrik Negara  |            [LinkedIn](https://www.linkedin.com/in/alexandro-nesta-248b1a266/) or [Github](https://github.com/AlxNesta)           |
 |       Ryan Rizaldy          | A764B4KY3988 | Mobile Development  |     Sekolah Tinggi Teknologi Bandung   | [LinkedIn](https://www.linkedin.com/in/ryan-rizaldy-a00164251/) or [Github](https://github.com/RyanRizaldy) |
 |         Hizbi Firdaus               | A476B4KY1795 | Mobile Development  |    Universitas Widyatama   | [LinkedIn](https://www.linkedin.com/in/hizbifirdaus/) or [Github](https://github.com/hizbifirdaus) |
 
