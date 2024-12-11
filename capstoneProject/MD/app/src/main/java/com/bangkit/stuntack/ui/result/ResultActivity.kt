@@ -30,6 +30,14 @@ class ResultActivity : AppCompatActivity() {
         val predictedClass = intent.getStringExtra("PREDICTED_CLASS") ?: ""
 
         // Tentukan nilai untuk slider (berdasarkan status prediksi)
+        // Tentukan teks tips berdasarkan prediksi
+        val tipsMessage = getTipsMessage(predictedClass)
+        binding.tips.text = tipsMessage
+
+        // Peta status prediksi ke pesan khusus
+        val predictionMessage = getCustomMessage(predictedClass)
+
+        // Tentukan nilai untuk slider (misalnya, berdasarkan status prediksi)
         val sliderValue = when (predictedClass) {
             "severely_stunted" -> "sangat stunting"
             "stunted" -> "stunting"
@@ -53,6 +61,16 @@ class ResultActivity : AppCompatActivity() {
         }
 
         playAnimation()
+    }
+
+    private fun getTipsMessage(predictedClass: String): String {
+        return when (predictedClass.lowercase()) {
+            "severely_stunted" -> getString(R.string.sangat_stunting)
+            "stunted" -> getString(R.string.stunting)
+            "normal" -> getString(R.string.normal)
+            "tinggi" -> getString(R.string.tinggi)
+            else -> "No specific tips available for this prediction."
+        }
     }
 
     private fun setupRecyclerView() {
