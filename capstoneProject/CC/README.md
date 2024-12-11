@@ -19,11 +19,13 @@
     
     ```
 4) Testing with Postman to /predict
+    ```
     {
       "umur": 50,
       "jenis_kelamin": 1,
       "tinggi_badan": 90
-    }  
+    } 
+    ``` 
 
 ## License
 This project is licensed by C242-PS376 Team Bangkit Cohort 2024 Batch 2.
