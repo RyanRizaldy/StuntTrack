@@ -5,11 +5,14 @@ import android.animation.ObjectAnimator
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bangkit.stuntack.R
 import com.bangkit.stuntack.data.remote.retrofit.ApiConfig
 import com.bangkit.stuntack.databinding.ActivityResultBinding
 import com.bangkit.stuntack.ui.news.NewsAdapter
@@ -26,18 +29,51 @@ class ResultActivity : AppCompatActivity() {
         binding = ActivityResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        showLottieAnimation()
+
+        // Tetapkan handler untuk mengatur logika setelah animasi selesai
+        Handler(Looper.getMainLooper()).postDelayed({
+            hideLottieAnimation()
+            initializeContent()
+        }, 3000) // 3 detik
+    }
+
+    private fun showLottieAnimation() {
+        binding.progressBar.visibility = View.VISIBLE
+        binding.stuntBar.visibility = View.GONE
+        binding.stuntResult.visibility = View.GONE
+        binding.stuntDisclaimer.visibility = View.GONE
+        binding.tipsTitle.visibility = View.GONE
+        binding.tipsCard.visibility = View.GONE
+        binding.articleTitle.visibility = View.GONE
+        binding.rvArticles.visibility = View.GONE
+        binding.btnBack.visibility = View.GONE
+        binding.result.visibility = View.GONE
+    }
+
+    private fun hideLottieAnimation() {
+        binding.progressBar.visibility = View.GONE
+        binding.stuntBar.visibility = View.VISIBLE
+        binding.stuntResult.visibility = View.VISIBLE
+        binding.stuntDisclaimer.visibility = View.VISIBLE
+        binding.tipsTitle.visibility = View.VISIBLE
+        binding.tipsCard.visibility = View.VISIBLE
+        binding.articleTitle.visibility = View.VISIBLE
+        binding.rvArticles.visibility = View.VISIBLE
+        binding.btnBack.visibility = View.VISIBLE
+        binding.result.visibility = View.VISIBLE
+    }
+
+    private fun initializeContent() {
         // Ambil status prediksi dari intent
         val predictedClass = intent.getStringExtra("PREDICTED_CLASS") ?: ""
 
         // Tentukan nilai untuk slider (berdasarkan status prediksi)
-        // Tentukan teks tips berdasarkan prediksi
         val tipsMessage = getTipsMessage(predictedClass)
         binding.tips.text = tipsMessage
 
-        // Peta status prediksi ke pesan khusus
         val predictionMessage = getCustomMessage(predictedClass)
 
-        // Tentukan nilai untuk slider (misalnya, berdasarkan status prediksi)
         val sliderValue = when (predictedClass) {
             "severely_stunted" -> "sangat stunting"
             "stunted" -> "stunting"
@@ -46,16 +82,12 @@ class ResultActivity : AppCompatActivity() {
             else -> "unknown"
         }
 
-        // Atur RangeSlider dan tampilkan pesan hasil prediksi
         setRangeSliderResult(sliderValue)
-        binding.stuntResult.text = getCustomMessage(predictedClass)
+        binding.stuntResult.text = predictionMessage
 
         setupRecyclerView()
-
-        // Fetch dan filter berita berdasarkan hasil prediksi
         fetchAndFilterNews(predictedClass)
 
-        // Button untuk kembali
         binding.btnBack.setOnClickListener {
             finish()
         }
@@ -169,7 +201,6 @@ class ResultActivity : AppCompatActivity() {
     }
 
     private fun playAnimation() {
-
         val stuntBar = ObjectAnimator.ofFloat(binding.stuntBar, View.ALPHA, 1f).setDuration(100)
         val stunResult =
             ObjectAnimator.ofFloat(binding.stuntResult, View.ALPHA, 1f).setDuration(100)
