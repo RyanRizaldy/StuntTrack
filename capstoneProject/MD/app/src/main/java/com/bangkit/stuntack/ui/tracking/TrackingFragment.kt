@@ -12,13 +12,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.bangkit.stuntack.MainActivity
 import com.bangkit.stuntack.data.database.helper.DateHelper
 import com.bangkit.stuntack.data.database.repository.HistoryRepository
 import com.bangkit.stuntack.data.database.room.History
 import com.bangkit.stuntack.data.remote.response.ModelResponse
 import com.bangkit.stuntack.data.remote.response.PredictionRequest
-import com.bangkit.stuntack.data.remote.retrofit.Config
+import com.bangkit.stuntack.data.remote.retrofit.ApiConfig
 import com.bangkit.stuntack.databinding.FragmentTrackingBinding
 import com.bangkit.stuntack.ui.ViewModelFactory
 import com.bangkit.stuntack.ui.history.HistoryViewModel
@@ -72,9 +71,12 @@ class TrackingFragment : Fragment() {
             }
 
             lifecycleScope.launch {
+                showLoading(true)
                 val prediction = sendPredictionRequest(umur, tinggiBadan, jenisKelamin)
+                showLoading(false)
                 if (prediction != null) {
                     saveToHistory(name, prediction.predictedClass ?: "Unknown")
+                    resetInputFields()
                     navigateToResultActivity(prediction)
                 } else {
                     Toast.makeText(requireContext(), "Failed to get prediction", Toast.LENGTH_SHORT).show()
@@ -86,7 +88,7 @@ class TrackingFragment : Fragment() {
     private suspend fun sendPredictionRequest(umur: Int, tinggiBadan: Float, jenisKelamin: Int): ModelResponse? {
         return try {
             val request = PredictionRequest(umur, jenisKelamin, tinggiBadan)
-            val response = Config.getApiService().predict(request)
+            val response = ApiConfig.getApiService().predict(request)
 
             if (response.isSuccessful) {
                 response.body() // Respons berhasil
@@ -114,6 +116,17 @@ class TrackingFragment : Fragment() {
                 prediction.predictionProbability?.let { ArrayList(it) })
         }
         startActivity(intent)
+    }
+
+    private fun resetInputFields() {
+        binding.nameInput.text?.clear()
+        binding.ageEditText.editText?.text?.clear()
+        binding.heightEditText.editText?.text?.clear()
+        binding.radioGroupGender.clearCheck()
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
 
     override fun onDestroyView() {

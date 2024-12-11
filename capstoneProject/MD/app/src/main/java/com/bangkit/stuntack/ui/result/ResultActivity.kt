@@ -1,18 +1,27 @@
 package com.bangkit.stuntack.ui.result
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.os.Handler
+import android.os.Looper
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.stuntack.R
+import com.bangkit.stuntack.data.remote.retrofit.ApiConfig
 import com.bangkit.stuntack.databinding.ActivityResultBinding
-import java.util.Locale
+import com.bangkit.stuntack.ui.news.NewsAdapter
+import kotlinx.coroutines.launch
+
 
 class ResultActivity : AppCompatActivity() {
     private lateinit var binding: ActivityResultBinding
+    private lateinit var newsAdapter: NewsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,13 +29,51 @@ class ResultActivity : AppCompatActivity() {
         binding = ActivityResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        showLottieAnimation()
+
+        // Tetapkan handler untuk mengatur logika setelah animasi selesai
+        Handler(Looper.getMainLooper()).postDelayed({
+            hideLottieAnimation()
+            initializeContent()
+        }, 3000) // 3 detik
+    }
+
+    private fun showLottieAnimation() {
+        binding.progressBar.visibility = View.VISIBLE
+        binding.stuntBar.visibility = View.GONE
+        binding.stuntResult.visibility = View.GONE
+        binding.stuntDisclaimer.visibility = View.GONE
+        binding.tipsTitle.visibility = View.GONE
+        binding.tipsCard.visibility = View.GONE
+        binding.articleTitle.visibility = View.GONE
+        binding.rvArticles.visibility = View.GONE
+        binding.btnBack.visibility = View.GONE
+        binding.result.visibility = View.GONE
+    }
+
+    private fun hideLottieAnimation() {
+        binding.progressBar.visibility = View.GONE
+        binding.stuntBar.visibility = View.VISIBLE
+        binding.stuntResult.visibility = View.VISIBLE
+        binding.stuntDisclaimer.visibility = View.VISIBLE
+        binding.tipsTitle.visibility = View.VISIBLE
+        binding.tipsCard.visibility = View.VISIBLE
+        binding.articleTitle.visibility = View.VISIBLE
+        binding.rvArticles.visibility = View.VISIBLE
+        binding.btnBack.visibility = View.VISIBLE
+        binding.result.visibility = View.VISIBLE
+    }
+
+    private fun initializeContent() {
         // Ambil status prediksi dari intent
         val predictedClass = intent.getStringExtra("PREDICTED_CLASS") ?: ""
 
-        // Peta status prediksi ke pesan khusus
+        // Tentukan nilai untuk slider (berdasarkan status prediksi)
+        val tipsMessage = getTipsMessage(predictedClass)
+        binding.tips.text = tipsMessage
+
         val predictionMessage = getCustomMessage(predictedClass)
 
-        // Tentukan nilai untuk slider (misalnya, berdasarkan status prediksi)
         val sliderValue = when (predictedClass) {
             "severely_stunted" -> "sangat stunting"
             "stunted" -> "stunting"
@@ -35,18 +82,73 @@ class ResultActivity : AppCompatActivity() {
             else -> "unknown"
         }
 
-        // Atur RangeSlider dan tampilkan pesan hasil prediksi
         setRangeSliderResult(sliderValue)
-        binding.stuntResult.text = getCustomMessage(predictedClass)
+        binding.stuntResult.text = predictionMessage
 
-        // Button untuk kembali
+        setupRecyclerView()
+        fetchAndFilterNews(predictedClass)
+
         binding.btnBack.setOnClickListener {
             finish()
         }
+
+        playAnimation()
+    }
+
+    private fun getTipsMessage(predictedClass: String): String {
+        return when (predictedClass.lowercase()) {
+            "severely_stunted" -> getString(R.string.sangat_stunting)
+            "stunted" -> getString(R.string.stunting)
+            "normal" -> getString(R.string.normal)
+            "tinggi" -> getString(R.string.tinggi)
+            else -> "No specific tips available for this prediction."
+        }
+    }
+
+    private fun setupRecyclerView() {
+        newsAdapter = NewsAdapter(this)
+        binding.rvArticles.apply {
+            layoutManager = LinearLayoutManager(this@ResultActivity)
+            adapter = newsAdapter
+        }
+    }
+
+    private fun mapPredictedClass(predictedClass: String): String {
+        return when (predictedClass.lowercase()) {
+            "severely_stunted" -> "several_stunted"
+            else -> predictedClass
+        }
+    }
+
+    private fun fetchAndFilterNews(predictedClass: String) {
+        binding.progressBar.visibility = View.VISIBLE // Tampilkan loading animation
+        binding.rvArticles.visibility = View.GONE // Sembunyikan RecyclerView
+
+        lifecycleScope.launch {
+            try {
+                val newsList = ApiConfig.getApiService().getNews()
+                val mappedClass = mapPredictedClass(predictedClass)
+                val filteredNews = newsList.filter { news ->
+                    news.predictedClass.equals(mappedClass, ignoreCase = true)
+                }
+                newsAdapter.submitList(filteredNews)
+
+                // Sembunyikan animasi dan tampilkan RecyclerView setelah data selesai dimuat
+                binding.progressBar.visibility = View.GONE
+                binding.rvArticles.visibility = View.VISIBLE
+
+            } catch (e: Exception) {
+                binding.progressBar.visibility = View.GONE
+                Toast.makeText(this@ResultActivity, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun showError(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     private fun setRangeSliderResult(result: String) {
-        // Mendeklarasikan minValue, maxValue, dan color untuk setiap status
         val minValue: Float
         val maxValue: Float
         val color: Int
@@ -55,27 +157,27 @@ class ResultActivity : AppCompatActivity() {
             "sangat stunting" -> {
                 minValue = 0f
                 maxValue = 1f
-                color = Color.parseColor("#ba1a1a") // Merah untuk sangat stunting
+                color = Color.parseColor("#ba1a1a") // Merah
             }
             "stunting" -> {
                 minValue = 1f
                 maxValue = 2f
-                color = Color.parseColor("#F17600") // Oranye untuk stunting
+                color = Color.parseColor("#F17600") // Oranye
             }
             "normal" -> {
                 minValue = 2f
                 maxValue = 3f
-                color = Color.parseColor("#FED000") // Kuning untuk normal
+                color = Color.parseColor("#FED000") // Kuning
             }
             "baik" -> {
                 minValue = 3f
                 maxValue = 4f
-                color = Color.parseColor("#00A26A") // Hijau untuk baik
+                color = Color.parseColor("#00A26A") // Hijau
             }
             else -> {
                 minValue = 0f
                 maxValue = 4f
-                color = Color.GRAY // Gray jika status tidak dikenal
+                color = Color.GRAY
             }
         }
 
@@ -96,6 +198,35 @@ class ResultActivity : AppCompatActivity() {
             "tinggi" -> "Your child is in good nutritional health, continue maintaining a balanced diet."
             else -> "Unable to determine the prediction. Please consult a healthcare provider."
         }
+    }
+
+    private fun playAnimation() {
+        val stuntBar = ObjectAnimator.ofFloat(binding.stuntBar, View.ALPHA, 1f).setDuration(100)
+        val stunResult =
+            ObjectAnimator.ofFloat(binding.stuntResult, View.ALPHA, 1f).setDuration(100)
+        val stunDisclaimer =
+            ObjectAnimator.ofFloat(binding.stuntDisclaimer, View.ALPHA, 1f).setDuration(100)
+        val tipsTitle =
+            ObjectAnimator.ofFloat(binding.tipsTitle, View.ALPHA, 1f).setDuration(100)
+        val tipsCard =
+            ObjectAnimator.ofFloat(binding.tipsCard, View.ALPHA, 1f).setDuration(100)
+        val articleTitle =
+            ObjectAnimator.ofFloat(binding.articleTitle, View.ALPHA, 1f).setDuration(100)
+        val rvArticle =
+            ObjectAnimator.ofFloat(binding.rvArticles, View.ALPHA, 1f).setDuration(100)
+
+        AnimatorSet().apply {
+            playSequentially(
+                stuntBar,
+                stunResult,
+                stunDisclaimer,
+                tipsTitle,
+                tipsCard,
+                articleTitle,
+                rvArticle
+            )
+            startDelay = 100
+        }.start()
     }
 
 }

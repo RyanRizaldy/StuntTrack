@@ -18,11 +18,19 @@
     <string name="Stunt_status">Your child is in good nutritional health,\ncontinue maintaining a balanced diet.</string>
     <string name="Stunt_disclaimer">* Results are predictive and not a medical diagnosis. Consult a healthcare provider for accurate evaluation.</string>
     <string name="tips_title">Nutrition</string>
-    <string name="tips_list">-ini tips pertama\n-tips ke 2\n-tips ke 3</string>
-    <string name="article">Related Article</string>
+    <string name="tips_list">-tips 1\n-tips 2</string>
+    <string name="article">Related Articles</string>
     <string name="tips">Quick Tips</string>
     <string name="history_title">Detection\nHistory</string>
     <string name="empty">nama kosong</string>
     <string name="news_articles">News \nArticles</string>
     <string name="result">Result</string>
+    <string name="error_message">Error: %1$s</string>
+
+    <string name="tinggi">- Ensure the child receives a balanced diet for optimal growth. \n- Engage in regular exercise, maintain good posture, get enough sleep, and eat nutritious meals daily.</string>
+    <string name="normal">- Provide healthy meals with complete nutrition and appealing presentation. \n- Teach the importance of a balanced diet to support the child\'s growth.</string>
+    <string name="stunting">- Monitor the child\'s nutritional status to prevent stunting and obesity. \n- Consult a doctor. Prevent stunting through early education and action.</string>
+    <string name="sangat_stunting">- Fulfill the child\'s nutritional needs, encourage regular exercise. \n- Consult a doctor. Consistently provide nutritious meals and discuss supplements with a healthcare provider.</string>
+
+
 </resources>
