@@ -1,6 +1,8 @@
 package com.bangkit.stuntack.ui.news
 
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +19,7 @@ class NewsFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var newsAdapter: NewsAdapter
     private val viewModel: NewsViewModel by viewModels()
+    private var isAnimationMinTimeElapsed = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,38 +33,70 @@ class NewsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Setup RecyclerView
-        val layoutManager = LinearLayoutManager(requireContext())
-        binding.rvNews.layoutManager = layoutManager
+        binding.rvNews.layoutManager = LinearLayoutManager(requireContext())
 
         // Initialize the adapter
         newsAdapter = NewsAdapter(requireContext())
         binding.rvNews.adapter = newsAdapter
 
         // Observe news data
-        viewModel.news.observe(viewLifecycleOwner, Observer { news ->
+        viewModel.news.observe(viewLifecycleOwner) { news ->
             if (news != null) {
-                Log.d("NewsFragment", "News list: $news")
                 newsAdapter.submitList(news)
-            } else {
-                Log.d("NewsFragment", "News list is null or empty")
             }
-        })
+            if (isAnimationMinTimeElapsed) {
+                showLoading(false)
+            }
+        }
 
         // Observe loading state
-        viewModel.isLoading.observe(viewLifecycleOwner, Observer { isLoading ->
-            showLoading(isLoading)
-        })
+        viewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+            if (isLoading) {
+                showLoading(true)
+                startMinimumAnimationTimer()
+            } else if (isAnimationMinTimeElapsed) {
+                showLoading(false)
+            }
+        }
 
         // Fetch news data from API
         viewModel.getNews()
     }
 
     private fun showLoading(isLoading: Boolean) {
-        binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+        // Add null check for binding
+        if (_binding == null) return
+
+        if (isLoading) {
+            binding.progressBar.apply {
+                visibility = View.VISIBLE
+                playAnimation()
+            }
+            binding.contentLayout.visibility = View.GONE
+        } else {
+            binding.progressBar.apply {
+                cancelAnimation()
+                visibility = View.GONE
+            }
+            binding.contentLayout.visibility = View.VISIBLE
+        }
+    }
+
+    private fun startMinimumAnimationTimer() {
+        isAnimationMinTimeElapsed = false
+        Handler(Looper.getMainLooper()).postDelayed({
+            isAnimationMinTimeElapsed = true
+            if (viewModel.isLoading.value == false) {
+                showLoading(false)
+            }
+        }, 3000) // Minimum animation duration: 3 seconds
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
+        // Set binding to null to prevent memory leaks
         _binding = null
     }
 }
+
+
