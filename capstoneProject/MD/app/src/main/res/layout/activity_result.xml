@@ -100,88 +100,93 @@
         app:layout_constraintTop_toBottomOf="@+id/stuntResult" />
 
     <!-- QuickTips -->
-    <TextView
-        android:id="@+id/tips_title"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="30dp"
-        android:fontFamily="@font/gentium_basic"
-        android:text="@string/tips"
+        android:layout_height="0dp"
         android:layout_marginTop="16dp"
-        android:textColor="@color/title"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/stuntDisclaimer"
-        app:layout_constraintStart_toStartOf="@+id/stuntDisclaimer"
-        app:layout_constraintTop_toBottomOf="@+id/stuntDisclaimer" />
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/tips_card"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="8dp"
-        app:strokeWidth="0dp"
-        app:cardBackgroundColor="@color/card"
-        app:layout_constraintEnd_toEndOf="@+id/tips_title"
-        app:layout_constraintStart_toStartOf="@+id/tips_title"
-        app:layout_constraintTop_toBottomOf="@+id/tips_title">
+        app:layout_constraintTop_toBottomOf="@+id/stuntDisclaimer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingHorizontal="16dp"
-            android:paddingVertical="8dp">
+            android:orientation="vertical">
 
+            <!-- Quick Tips Title -->
             <TextView
-                android:layout_width="wrap_content"
+                android:id="@+id/tips_title"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/tips_title"
-                android:textAppearance="?attr/textAppearanceTitleMedium"
-                android:textColor="@color/title" />
+                android:layout_marginHorizontal="30dp"
+                android:fontFamily="@font/gentium_basic"
+                android:text="@string/tips"
+                android:textColor="@color/title"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
+            <!-- Quick Tips Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/tips_card"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginVertical="8dp"
-                android:text="@string/tips_list"
-                android:textAppearance="?attr/textAppearanceBodyMedium"
-                android:textColor="@color/title" />
+                android:layout_marginHorizontal="20dp"
+                android:layout_marginTop="8dp"
+                app:strokeWidth="0dp"
+                app:cardBackgroundColor="@color/card">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tips_title"
+                        android:textAppearance="?attr/textAppearanceTitleMedium"
+                        android:textColor="@color/title" />
+
+                    <TextView
+                        android:id="@+id/tips"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="8dp"
+                        android:text="@string/tips_list"
+                        android:textAppearance="?attr/textAppearanceBodyMedium"
+                        android:textColor="@color/title" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Article Title -->
+            <TextView
+                android:id="@+id/article_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/gentium_basic"
+                android:text="@string/article"
+                android:textSize="20sp"
+                android:paddingBottom="8dp"
+                android:textStyle="bold"
+                android:textColor="@color/title"
+                android:layout_marginTop="16dp"
+                android:layout_marginHorizontal="30dp" />
+
+            <!-- RecyclerView -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_articles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:overScrollMode="never"
+                android:scrollbarSize="0dp"
+                android:layout_marginHorizontal="20dp"
+                tools:listitem="@layout/card_news" />
+
         </LinearLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-
-    <!-- Article -->
-    <TextView
-        android:id="@+id/article_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/gentium_basic"
-        android:text="@string/article"
-        android:textSize="20sp"
-        android:paddingBottom="8dp"
-        android:textStyle="bold"
-        android:textColor="@color/title"
-        android:layout_marginTop="16dp"
-        android:layout_marginHorizontal="30dp"
-        app:layout_constraintEnd_toEndOf="@+id/tips_card"
-        app:layout_constraintStart_toStartOf="@+id/tips_card"
-        app:layout_constraintTop_toBottomOf="@+id/tips_card" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_articles"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:overScrollMode="never"
-        android:scrollbarSize="0dp"
-        android:layout_marginHorizontal="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/article_title"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:listitem="@layout/card_news" />
+    </androidx.core.widget.NestedScrollView>
 
     <ProgressBar
         android:id="@+id/progressBar"

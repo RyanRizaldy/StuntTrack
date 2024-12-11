@@ -32,6 +32,10 @@ class ResultActivity : AppCompatActivity() {
         // Ambil status prediksi dari intent
         val predictedClass = intent.getStringExtra("PREDICTED_CLASS") ?: ""
 
+        // Tentukan teks tips berdasarkan prediksi
+        val tipsMessage = getTipsMessage(predictedClass)
+        binding.tips.text = tipsMessage
+
         // Peta status prediksi ke pesan khusus
         val predictionMessage = getCustomMessage(predictedClass)
 
@@ -57,6 +61,16 @@ class ResultActivity : AppCompatActivity() {
         // Button untuk kembali
         binding.btnBack.setOnClickListener {
             finish()
+        }
+    }
+
+    private fun getTipsMessage(predictedClass: String): String {
+        return when (predictedClass.lowercase()) {
+            "severely_stunted" -> getString(R.string.sangat_stunting)
+            "stunted" -> getString(R.string.stunting)
+            "normal" -> getString(R.string.normal)
+            "tinggi" -> getString(R.string.tinggi)
+            else -> "No specific tips available for this prediction."
         }
     }
 
