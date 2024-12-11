@@ -1,15 +1,14 @@
 package com.bangkit.stuntack.ui.result
 
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.bangkit.stuntack.R
 import com.bangkit.stuntack.databinding.ActivityResultBinding
-import java.util.Locale
+
 
 class ResultActivity : AppCompatActivity() {
     private lateinit var binding: ActivityResultBinding
@@ -23,10 +22,8 @@ class ResultActivity : AppCompatActivity() {
         // Ambil status prediksi dari intent
         val predictedClass = intent.getStringExtra("PREDICTED_CLASS") ?: ""
 
-        // Peta status prediksi ke pesan khusus
-        val predictionMessage = getCustomMessage(predictedClass)
 
-        // Tentukan nilai untuk slider (misalnya, berdasarkan status prediksi)
+        // Tentukan nilai untuk slider (berdasarkan status prediksi)
         val sliderValue = when (predictedClass) {
             "severely_stunted" -> "sangat stunting"
             "stunted" -> "stunting"
@@ -43,10 +40,12 @@ class ResultActivity : AppCompatActivity() {
         binding.btnBack.setOnClickListener {
             finish()
         }
+
+
     }
 
     private fun setRangeSliderResult(result: String) {
-        // Mendeklarasikan minValue, maxValue, dan color untuk setiap status
+
         val minValue: Float
         val maxValue: Float
         val color: Int
@@ -55,27 +54,27 @@ class ResultActivity : AppCompatActivity() {
             "sangat stunting" -> {
                 minValue = 0f
                 maxValue = 1f
-                color = Color.parseColor("#ba1a1a") // Merah untuk sangat stunting
+                color = Color.parseColor("#ba1a1a") // Merah
             }
             "stunting" -> {
                 minValue = 1f
                 maxValue = 2f
-                color = Color.parseColor("#F17600") // Oranye untuk stunting
+                color = Color.parseColor("#F17600") // Oranye
             }
             "normal" -> {
                 minValue = 2f
                 maxValue = 3f
-                color = Color.parseColor("#FED000") // Kuning untuk normal
+                color = Color.parseColor("#FED000") // Kuning
             }
             "baik" -> {
                 minValue = 3f
                 maxValue = 4f
-                color = Color.parseColor("#00A26A") // Hijau untuk baik
+                color = Color.parseColor("#00A26A") // Hijau
             }
             else -> {
                 minValue = 0f
                 maxValue = 4f
-                color = Color.GRAY // Gray jika status tidak dikenal
+                color = Color.GRAY
             }
         }
 
@@ -97,5 +96,6 @@ class ResultActivity : AppCompatActivity() {
             else -> "Unable to determine the prediction. Please consult a healthcare provider."
         }
     }
+
 
 }
