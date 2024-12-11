@@ -3,16 +3,25 @@ package com.bangkit.stuntack.ui.result
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.stuntack.R
+import com.bangkit.stuntack.data.remote.retrofit.ApiConfig
 import com.bangkit.stuntack.databinding.ActivityResultBinding
+import com.bangkit.stuntack.ui.news.NewsAdapter
+import kotlinx.coroutines.launch
+import retrofit2.Response
 import java.util.Locale
 
 class ResultActivity : AppCompatActivity() {
     private lateinit var binding: ActivityResultBinding
+    private lateinit var newsAdapter: NewsAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,9 +48,53 @@ class ResultActivity : AppCompatActivity() {
         setRangeSliderResult(sliderValue)
         binding.stuntResult.text = getCustomMessage(predictedClass)
 
+        // Inisialisasi RecyclerView
+        setupRecyclerView()
+
+        // Fetch dan filter berita berdasarkan hasil prediksi
+        fetchAndFilterNews(predictedClass)
+
         // Button untuk kembali
         binding.btnBack.setOnClickListener {
             finish()
+        }
+    }
+
+    private fun setupRecyclerView() {
+        newsAdapter = NewsAdapter(this)
+        binding.rvArticles.apply {
+            layoutManager = LinearLayoutManager(this@ResultActivity)
+            adapter = newsAdapter
+        }
+    }
+
+    private fun mapPredictedClass(predictedClass: String): String {
+        return when (predictedClass.lowercase()) {
+            "severely_stunted" -> "several_stunted"
+            else -> predictedClass
+        }
+    }
+
+    private fun fetchAndFilterNews(predictedClass: String) {
+        binding.progressBar.visibility = View.VISIBLE // Tampilkan loading
+        binding.rvArticles.visibility = View.GONE
+
+        lifecycleScope.launch {
+            try {
+                val newsList = ApiConfig.getApiService().getNews()
+                val mappedClass = mapPredictedClass(predictedClass)
+                val filteredNews = newsList.filter { news ->
+                    news.predictedClass.equals(mappedClass, ignoreCase = true)
+                }
+                newsAdapter.submitList(filteredNews)
+
+                binding.progressBar.visibility = View.GONE
+                binding.rvArticles.visibility = View.VISIBLE
+
+            } catch (e: Exception) {
+                binding.progressBar.visibility = View.GONE
+                Toast.makeText(this@ResultActivity, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
@@ -98,4 +151,7 @@ class ResultActivity : AppCompatActivity() {
         }
     }
 
+    private fun showError(message: String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
 }

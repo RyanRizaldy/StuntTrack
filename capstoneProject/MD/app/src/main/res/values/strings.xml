@@ -18,8 +18,8 @@
     <string name="Stunt_status">Your child is in good nutritional health,\ncontinue maintaining a balanced diet.</string>
     <string name="Stunt_disclaimer">* Results are predictive and not a medical diagnosis. Consult a healthcare provider for accurate evaluation.</string>
     <string name="tips_title">Nutrition</string>
-    <string name="tips_list">-ini tips pertama\n-tips ke 2\n-tips ke 3</string>
-    <string name="article">Related Article</string>
+    <string name="tips_list">-tips 1\n-tips 2\n-tips 3</string>
+    <string name="article">Related Articles</string>
     <string name="tips">Quick Tips</string>
     <string name="history_title">Detection\nHistory</string>
     <string name="empty">nama kosong</string>
