@@ -24,7 +24,7 @@
         tools:layout_editor_absoluteX="0dp" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_event"
+        android:id="@+id/rv_news"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:overScrollMode="never"

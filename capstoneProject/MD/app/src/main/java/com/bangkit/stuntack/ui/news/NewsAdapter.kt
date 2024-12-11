@@ -7,12 +7,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bangkit.stuntack.data.remote.response.ListEventsItem
+import com.bangkit.stuntack.R
+import com.bangkit.stuntack.data.remote.response.NewsResponseItem
 import com.bangkit.stuntack.databinding.CardNewsBinding
 import com.bangkit.stuntack.ui.news.detail.NewsDetailsActivity
 import com.bumptech.glide.Glide
 
-class NewsAdapter(private val context: Context) : ListAdapter<ListEventsItem, NewsAdapter.MyViewHolder>(
+class NewsAdapter(private val context: Context) : ListAdapter<NewsResponseItem, NewsAdapter.MyViewHolder>(
     DIFF_CALLBACK
 ) {
 
@@ -22,38 +23,39 @@ class NewsAdapter(private val context: Context) : ListAdapter<ListEventsItem, Ne
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val event = getItem(position)
-        holder.bind(event, context)
+        val newsItem = getItem(position)
+        holder.bind(newsItem, context)
     }
 
     class MyViewHolder(private val binding: CardNewsBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(event: ListEventsItem, context: Context) {
-            binding.eventTitle.text = event.name
+        fun bind(newsItem: NewsResponseItem, context: Context) {
+            binding.newsTitle.text = newsItem.judul
             Glide.with(binding.root.context)
-                .load(event.mediaCover)
-                .into(binding.eventImage)
+                .load(newsItem.gambar)
+                .error(R.drawable.placeholder_image)
+                .into(binding.newsImage)
 
             binding.root.setOnClickListener {
                 val intent = Intent(context, NewsDetailsActivity::class.java)
-                intent.putExtra("EVENT_ID", event.id)
+                intent.putExtra("NEWS_ID", newsItem.id)
                 context.startActivity(intent)
             }
         }
     }
 
     companion object {
-        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<ListEventsItem>() {
+        val DIFF_CALLBACK = object : DiffUtil.ItemCallback<NewsResponseItem>() {
             override fun areItemsTheSame(
-                oldItem: ListEventsItem,
-                newItem: ListEventsItem
+                oldItem: NewsResponseItem,
+                newItem: NewsResponseItem
             ): Boolean {
                 return oldItem.id == newItem.id
             }
 
             override fun areContentsTheSame(
-                oldItem: ListEventsItem,
-                newItem: ListEventsItem
+                oldItem: NewsResponseItem,
+                newItem: NewsResponseItem
             ): Boolean {
                 return oldItem == newItem
             }

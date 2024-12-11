@@ -2,13 +2,7 @@ package com.bangkit.stuntack.data.remote.response
 
 import com.google.gson.annotations.SerializedName
 
-data class NewsResponse(
-
-	@field:SerializedName("NewsResponse")
-	val newsResponse: List<NewsResponseItem?>? = null
-)
-
-data class NewsResponseItem(
+data class NewsDetailResponse(
 
 	@field:SerializedName("penulis")
 	val penulis: String? = null,
@@ -23,5 +17,8 @@ data class NewsResponseItem(
 	val judul: String? = null,
 
 	@field:SerializedName("gambar")
-	val gambar: String? = null
+	val gambar: String? = null,
+
+	@field:SerializedName("isi")
+	val isi: String? = null
 )
