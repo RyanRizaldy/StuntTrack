@@ -1,6 +1,7 @@
 package com.bangkit.stuntack.ui.news
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +15,7 @@ class NewsFragment : Fragment() {
 
     private var _binding: FragmentNewsBinding? = null
     private val binding get() = _binding!!
-    private lateinit var eventsAdapter: NewsAdapter
+    private lateinit var newsAdapter: NewsAdapter
     private val viewModel: NewsViewModel by viewModels()
 
     override fun onCreateView(
@@ -30,18 +31,20 @@ class NewsFragment : Fragment() {
 
         // Setup RecyclerView
         val layoutManager = LinearLayoutManager(requireContext())
-        binding.rvEvent.layoutManager = layoutManager
+        binding.rvNews.layoutManager = layoutManager
 
         // Initialize the adapter
-        eventsAdapter = NewsAdapter(requireContext())
-        binding.rvEvent.adapter = eventsAdapter
+        newsAdapter = NewsAdapter(requireContext())
+        binding.rvNews.adapter = newsAdapter
 
-        // Observe data from ViewModel
-        viewModel.events.observe(viewLifecycleOwner, Observer { events ->
-            if (events != null) {
-                eventsAdapter.submitList(events)
+        // Observe news data
+        viewModel.news.observe(viewLifecycleOwner, Observer { news ->
+            if (news != null) {
+                Log.d("NewsFragment", "News list: $news")
+                newsAdapter.submitList(news)
+            } else {
+                Log.d("NewsFragment", "News list is null or empty")
             }
-            showLoading(false)
         })
 
         // Observe loading state
@@ -49,8 +52,8 @@ class NewsFragment : Fragment() {
             showLoading(isLoading)
         })
 
-        // Fetch data from API
-        viewModel.getActiveEvents()
+        // Fetch news data from API
+        viewModel.getNews()
     }
 
     private fun showLoading(isLoading: Boolean) {
