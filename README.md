@@ -1,7 +1,7 @@
 # StunTrack: Stunting Detection and Parenting Awareness App Support 📏🩺
 
 <p align="center">
-  <img src="capstoneProject/profile/LOGO%207.png" alt="StunTrack Logo" width="300" />
+  <img src="capstoneProject/profile/prof.png" alt="StunTrack Logo" width="300" />
 </p>
 
 Theme 🩺
