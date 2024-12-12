@@ -38,4 +38,4 @@ Install StunTrack App in here
 |       Ryan Rizaldy          | A764B4KY3988 | Mobile Development  |     Sekolah Tinggi Teknologi Bandung   | [LinkedIn](https://www.linkedin.com/in/ryan-rizaldy-a00164251/) or [Github](https://github.com/RyanRizaldy) |
 |         Hizbi Firdaus               | A476B4KY1795 | Mobile Development  |    Universitas Widyatama   | [LinkedIn](https://www.linkedin.com/in/hizbifirdaus/) or [Github](https://github.com/hizbifirdaus) |
 
-<p align="right"> Project Capstone for Bangkit Academy 2024 Batch 2 <br> C242-PS376 Teams </p>
+<p align="center"> Project Capstone for Bangkit Academy 2024 Batch 2 <br> C242-PS376 Teams </p>
