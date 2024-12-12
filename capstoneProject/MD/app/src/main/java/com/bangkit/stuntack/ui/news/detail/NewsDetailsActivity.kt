@@ -4,10 +4,13 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.text.HtmlCompat
 import com.bangkit.stuntack.R
 import com.bangkit.stuntack.data.remote.response.NewsDetailResponse
 import com.bangkit.stuntack.databinding.ActivityNewsDetailsBinding
 import com.bumptech.glide.Glide
+import java.text.SimpleDateFormat
+import java.util.Locale
 
 class NewsDetailsActivity : AppCompatActivity() {
 
@@ -52,14 +55,30 @@ class NewsDetailsActivity : AppCompatActivity() {
 
     private fun populateData(detail: NewsDetailResponse) {
         binding.textTitle.text = detail.judul
-        binding.textDate.text = detail.predictedClass
+        binding.textDate.text = detail.tanggalDibuat?.let { formatDate(it) }
         binding.textPublisher.text = detail.penulis
-        binding.textDescription.text = detail.isi
+        binding.textDescription.text = detail.isi?.let {
+            HtmlCompat.fromHtml(
+                it,
+                HtmlCompat.FROM_HTML_MODE_LEGACY
+            )
+        }
 
         Glide.with(this)
             .load(detail.gambar)
             .placeholder(R.drawable.placeholder_image)
             .into(binding.imageNews)
+    }
+
+    private fun formatDate(dateString: String): String {
+        return try {
+            val originalFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+            val targetFormat = SimpleDateFormat("dd MMMM yyyy", Locale.getDefault())
+            val date = originalFormat.parse(dateString)
+            targetFormat.format(date)
+        } catch (e: Exception) {
+            dateString
+        }
     }
 
     private fun showLoading(isLoading: Boolean) {

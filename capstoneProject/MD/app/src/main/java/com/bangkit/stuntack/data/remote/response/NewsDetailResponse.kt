@@ -20,5 +20,8 @@ data class NewsDetailResponse(
 	val gambar: String? = null,
 
 	@field:SerializedName("isi")
-	val isi: String? = null
+	val isi: String? = null,
+
+	@field:SerializedName("tanggal_dibuat")
+	val tanggalDibuat: String? = null
 )

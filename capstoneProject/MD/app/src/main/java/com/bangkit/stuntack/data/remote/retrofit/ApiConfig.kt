@@ -15,7 +15,7 @@ class ApiConfig {
                 .build()
 
             val retrofit = Retrofit.Builder()
-                .baseUrl("https://my-flask-app-v1-792955132014.asia-southeast2.run.app/")
+                .baseUrl("https://stuntrack-app-792955132014.asia-southeast2.run.app/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build()

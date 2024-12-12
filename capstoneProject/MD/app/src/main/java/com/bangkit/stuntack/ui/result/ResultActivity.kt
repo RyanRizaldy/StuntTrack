@@ -115,7 +115,7 @@ class ResultActivity : AppCompatActivity() {
 
     private fun mapPredictedClass(predictedClass: String): String {
         return when (predictedClass.lowercase()) {
-            "severely_stunted" -> "several_stunted"
+            "severely_stunted" -> "severly_stunted"
             else -> predictedClass
         }
     }
