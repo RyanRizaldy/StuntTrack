@@ -23,6 +23,10 @@ StunTrack is a smart app designed to help families detect and manage stunting in
 5. **User-Friendly** 📱
    - A clean and intuitive interface ensuring seamless navigation for all users.
 
+## Install App
+install StunTrack App 
+(https://drive.google.com/drive/folders/1f1uscmCOguLj1vsrFY16mzJNpz7285Gt?usp=sharing)[STunTrack APK]
+
 ## Our Team Members 👥
 |            Name          | Bangkit ID |    Learning Path        |                    Universitas                    |                                                       Contacts                                                      |
 | :-------------------------: | :--------: | :----------------: | :----------------------------------------: | :-----------------------------------------------------------------------------------------------------------------: |
