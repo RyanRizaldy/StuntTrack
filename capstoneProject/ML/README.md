@@ -1,5 +1,4 @@
 # StunTrack : Stunting Detection and Parenting Awareness App Support
-blabla
 
 ## Requirements
 To run this project, you need the following dependencies:
