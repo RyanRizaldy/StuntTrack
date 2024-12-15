@@ -35,7 +35,7 @@ Install StunTrack App in here
 |    Alif Adhitya Rambani         | M118B4KY0377 | Machine Learning    |     Institut Teknologi Perusahaan Listrik Negara      |            [LinkedIn](https://www.linkedin.com/in/alif-adhitya/) or [Github]()             |
 |      Azmi Azis        | C118B4KY0772 | Cloud Computing     |    Institut Teknologi Perusahaan Listrik Negara  |    [LinkedIn](https://www.linkedin.com/in/azmiazis/) or [Github](https://github.com/crophx)    |
 |     Alexandro Nesta          | C118B4KY0346 | Cloud Computing     |    Institut Teknologi Perusahaan Listrik Negara  |            [LinkedIn](https://www.linkedin.com/in/alexandro-nesta-248b1a266/) or [Github](https://github.com/AlxNesta)           |
-|       Ryan Rizaldy          | A764B4KY3988 | Mobile Development  |     Sekolah Tinggi Teknologi Bandung   | [LinkedIn](https://www.linkedin.com/in/ryan-rizaldy-a00164251/) or [Github](https://github.com/RyanRizaldy) |
+|       Ryan Rizaldy          | A764B4KY3988 | Mobile Development  |     Universitas Teknologi Bandung   | [LinkedIn](https://www.linkedin.com/in/ryan-rizaldy-a00164251/) or [Github](https://github.com/RyanRizaldy) |
 |         Hizbi Firdaus               | A476B4KY1795 | Mobile Development  |    Universitas Widyatama   | [LinkedIn](https://www.linkedin.com/in/hizbifirdaus/) or [Github](https://github.com/hizbifirdaus) |
 
 <p align="center"> Project Capstone for Bangkit Academy 2024 Batch 2 <br> C242-PS376 Teams </p>
